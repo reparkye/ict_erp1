@@ -36,7 +36,7 @@
 		String miEtc = request.getParameter("miEtc");
 		String lvl = request.getParameter("lvl");
 		sql = "insert into member_info(";
-		sql += "mino,miid,mipwd, dino,miemail, mietc,"; 
+		sql += "mino,miid,mipwd, duno,miemail, mietc,"; 
 		sql += "credat, cretim, creusr,"; 
 		sql += "moddat, modtim, modusr,"; 
 		sql += "lvl,miname)";
