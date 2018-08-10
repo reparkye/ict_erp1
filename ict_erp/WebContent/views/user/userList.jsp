@@ -1,3 +1,5 @@
+<%@page import="com.ict.erp.common.DBCon"%>
+<%@page import="com.ict.erp.common.DBUtils"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -10,47 +12,52 @@
 <%@ include file="/views/common/common.jsp" %>
 <%!
 public List<Map<String,String>> getMemberList(){
-	List<Map<String,String>> memberList=new ArrayList<Map<String,String>>();
-	String url="jdbc:oragle:thin:@localhost:1521:xe";
-	String root="ictu";
-	String password="12345678";
-	String driver="oracle.jdbc.driver.OracleDriver";
-	Connection con=null;
+	List<Map<String,String>> memberList  = null;
+	DBUtils dbu = new DBUtils(DBCon.getCon());
 	try{
-		Class.forName(driver);
-		con=DriverManager.getConnection(url,root,password);
-		String sql="selectl * from member_info";
-		PreparedStatement ps=con.prepareStatement(sql);
-		ResultSet rs=ps.executeQuery();
-		while(rs.next()){
-			Map<String,String> member=new HashMap<String,String>();
-			member.put("miNo",rs.getString("miNo"));
-			member.put("miId",rs.getString("miId"));
-			member.put("miPwd",rs.getString("miPwd"));
-			member.put("diNo",rs.getString("duNo"));	
-			member.put("miEmail",rs.getString("miEmail"));
-			member.put("miEtc",rs.getString("miEtc"));
-			member.put("creDat",rs.getString("creDat"));
-			member.put("creTim",rs.getString("creTim"));
-			member.put("creUsr",rs.getString("creUsr"));
-			member.put("modDat",rs.getString("modDat"));
-			member.put("modTim",rs.getString("modTim"));
-			member.put("modUsr",rs.getString("modUsr"));
-			member.put("lv",rs.getString("lv"));
-			member.put("miName",rs.getString("miName"));
-			memberList.add(member);
-		}
-		
-	}catch(ClassNotFoundException cnfe){
-		
-	}catch(SQLException sqle){
-		
+		String sql = "select MINO,  MINAME,  MIID,  MIEMAIL, ";
+		sql	+=	" (SELECT MIID FROM MEMBER_INFO MI2 WHERE MI2.MINO= MI.CREUSR) CREUSR,";
+		sql	+=	" (SELECT DINAME FROM DEPART_INFO DI WHERE DI.DINO = MI.DINO) DINAME";
+		sql	+=	" FROM MEMBER_INFO MI" ;
+		memberList = dbu.selectList(sql);
+	}catch(SQLException e){
+		System.out.println(e);
 	}
-	
 	return memberList;
 }
 %>
 
+<div class ="container">
+	<table class="table table-hover">
+	<thead>													
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>아이디</th>
+			<th>이메일주소</th>
+			<th>생성자</th>
+			<th>부서번호</th>
+		</tr>
+	</thead>
+	<tbody>
+<%
+List<Map<String,String>> memberList =  getMemberList();
+for(Map<String,String> member :memberList){
+%>
+			<tr>
+				<td><%=member.get("MINO") %></td>
+				<td><%=member.get("MINAME") %></td>
+				<td><%=member.get("MIID") %></td>
+				<td><%=member.get("MIEMAIL") %></td>
+				<td><%=member.get("CREUSR") %></td>
+				<td><%=member.get("DINAME") %></td>
+			</tr>		 
+<%
+}
+%>
+</tbody>
+</table>
+</div>
 <body>
 <%=getMemberList() %>
 </body>

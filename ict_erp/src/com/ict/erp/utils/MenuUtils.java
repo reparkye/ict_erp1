@@ -25,7 +25,8 @@
 			}
 			m = new Menu("views/user/signup.jsp","signup","Signup");
 			menuList.add(m);
-		
+			m = new Menu("views/user/userList.jsp","userList","User List");
+			menuList.add(m);
 		return menuList;
  	}
  	
