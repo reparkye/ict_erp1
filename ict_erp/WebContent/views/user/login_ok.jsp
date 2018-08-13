@@ -28,7 +28,7 @@
 					usr.put("name",rs.getString("miName"));
 			usr.put("email",rs.getString("miEmail"));
 			usr.put("id",rs.getString("miId"));
-			usr.put("dino",rs.getString("duNo"));
+			usr.put("dino",rs.getString("diNo"));
 			usr.put("mino",rs.getString("miNo"));
 			usr.put("lvl",rs.getString("lvl"));
 			session.setAttribute("user",usr);
