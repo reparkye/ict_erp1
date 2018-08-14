@@ -4,7 +4,8 @@
 <%@page import="com.ict.erp.utils.MenuUtils"%>
  <%@ page language="java" contentType="text/html; charset=UTF-8"
      pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
- <%! @SuppressWarnings("unchecked") %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+ 
  <% 
  String rPath = request.getContextPath() + "/";
 String title = "ERP EXAM";
@@ -12,10 +13,10 @@ String uri = request.getRequestURI();
 List<Menu> mList = MenuUtils.getMenuList(session.getAttribute("user"));
  
 if(session.getAttribute("user")==null){
-	if(uri.indexOf("login")==-1){
+	/* if(uri.indexOf("login")==-1){
 		response.sendRedirect(rPath + "views/user/login.jsp");
 		return;
-	}
+	}                        로그인 관련???*/      
 }
 Map<String,String> user = (Map<String,String>)session.getAttribute("user");
 %>
