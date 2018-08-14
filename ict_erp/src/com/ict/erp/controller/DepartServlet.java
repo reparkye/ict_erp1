@@ -22,7 +22,10 @@ public class DepartServlet extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();         /*/erp/depart/list  까지*/
+		String rPath = request.getContextPath();
 		String cmd = ICTUtils.getCmd(uri);
+		uri ="/views" + uri.replace(rPath, "") + ".jsp";		/*/erp/depart/list.jsp  에서 erp 없어짐 */
+		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
@@ -33,7 +36,10 @@ public class DepartServlet extends HttpServlet {
 		try {
 			if(cmd.equals("list")) {
 				List<DepartInfo> diList = ds.getDepartList();
-				RequestDispatcher rd = request.getRequestDispatcher("");
+				request.setAttribute("diList", diList);
+				RequestDispatcher rd = request.getRequestDispatcher(uri);
+				rd.forward(request, response);
+				return;
 		}else if(cmd.equals("view")) {
 			
 		}else {
