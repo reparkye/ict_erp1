@@ -23,9 +23,8 @@ public class DepartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();         /*/erp/depart/list  까지*/
 		String rPath = request.getContextPath();
-		String cmd = ICTUtils.getCmd(uri);
-		uri ="/views" + uri.replace(rPath, "") + ".jsp";		/*/erp/depart/list.jsp  에서 erp 없어짐 */
-		
+		String cmd = ICTUtils.getCmd(uri);				//커맨드만 빼오라는 것
+		uri ="/views" + uri.replace(rPath, "") + ".jsp";		/*/erp/depart/list.jsp  에서 erp 없어짐  그리고 .jsp 생략 가능*/		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
@@ -34,7 +33,7 @@ public class DepartServlet extends HttpServlet {
 			return;         				        /*      http://localhost/erp/depart/ 다음으로 아무것도 입력 안할경우에         */	
 	}
 		try {
-			if(cmd.equals("list")) {
+			if(cmd.equals("list")) {			//리스크끼리 비교했으니 트루
 				List<DepartInfo> diList = ds.getDepartList();
 				request.setAttribute("diList", diList);
 				RequestDispatcher rd = request.getRequestDispatcher(uri);

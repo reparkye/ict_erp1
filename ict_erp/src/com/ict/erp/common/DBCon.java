@@ -34,6 +34,7 @@ public class DBCon {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, user, pwd);
+			con.setAutoCommit(false);              /*딜리트할때 수정*/
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
