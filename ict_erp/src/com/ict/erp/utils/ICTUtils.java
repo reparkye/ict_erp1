@@ -13,15 +13,12 @@ public class ICTUtils {
 
 /*//
 public class ICTUtils {
-	public static String getCmd(String uri) {
-	int idx = uri.lastIndexof("/");
+	public static String getCmd(String uri){
+	int idx = uri.lastIndex("/");
 	if(idx == -1){
-		return null;
-}
+	return null;
+	}
 	return uri.substring(idx+1);
-substring(idx+1);
-
-
-
+}}
 
 //*/

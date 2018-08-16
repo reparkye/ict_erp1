@@ -8,11 +8,11 @@ import java.util.Map;
 public class MapTest {
 	public static void main(String[] args) {
 		Map<String,String> map = new HashMap<String,String>();
-		map.put("ÀÌ¸§", "°í±æµ¿");
-		map.put("³ªÀÌ", "33");
-		map.put("ÁÖ¼Ò", "¼­¿ï");
-		map.put("¾ÆÀÌµğ", "µÑ¸®");
-		map.put("ºñ¹ø", "1111");
+		map.put("ì´ë¦„", "ê¹€ë‘í•œ");
+		map.put("ë‚˜ì´", "33");
+		map.put("ì·¨ë¯¸", "ê²Œì„");
+		map.put("ì£¼ì†Œ", "ì¢…ë¡œ");
+		map.put("ë„˜ë²„", "1111");
 		
 		System.out.println(map);
 		List<Map<String,String>> mapList;
