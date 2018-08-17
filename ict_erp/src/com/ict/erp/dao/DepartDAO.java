@@ -7,6 +7,6 @@ import com.ict.erp.vo.DepartInfo;
 
 public interface DepartDAO {
 	
-	public List<DepartInfo> selectDepartList()throws SQLException;
+	public List<DepartInfo> selectDepartList() throws SQLException;
 	public DepartInfo selectDepart();
 }

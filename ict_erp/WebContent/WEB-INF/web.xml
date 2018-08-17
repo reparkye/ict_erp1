@@ -21,4 +21,13 @@
     <url-pattern>/depart/*</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>LvlServlet</servlet-name>
+    <servlet-class>com.ict.erp.controller.LvlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LvlServlet</servlet-name>
+    <url-pattern>/lvl/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

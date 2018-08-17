@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/views/common/common.jsp" %>      
+<%@ include file="/WEB-INF/views/common/common.jsp" %>      
 <body>
 <form action = "<%=rPath%>test/">	
 취미 : <input type="checkbox" name = "hobby" value ="잠">잠,      <!--  id는 중복 불가지만 name은 중복이 가능하다~!! --> 
