@@ -5,14 +5,14 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/common.jsp" %>
 <%
-String itNo = request.getParameter("itNo");
+int itNo = Integer.parseInt(request.getParameter("itNo"));
 String itText = request.getParameter("itText");
 String itPwd = request.getParameter("itPwd");
   
  Connection con = DBCon.getCon();
  String sql = "insert into ict_test values(?,?,?)";
  PreparedStatement ps = con.prepareStatement(sql);
- ps.setString(1,itNo);
+ ps.setInt(1,itNo);
  ps.setString(2,itText);
  ps.setString(3,itPwd);
  int cnt = ps.executeUpdate();
